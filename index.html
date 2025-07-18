@@ -1,301 +1,224 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>تقديم مذيعين جدد</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f7f7fb;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        body.dark {
-            background-color: #121212;
-            color: #eee;
-        }
-        header {
-            text-align: center;
-            padding: 2rem 1rem 1rem;
-            position: relative;
-        }
-        header h1 {
-            background-color: #5c6bc0;
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.5rem;
-            width: fit-content;
-            margin: 0 auto;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .lang-theme {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            display: flex;
-            gap: 10px;
-        }
-        .lang-theme span {
-            cursor: pointer;
-            background: #eee;
-            border-radius: 50%;
-            padding: 10px;
-            font-size: 18px;
-        }
-        .description {
-            text-align: center;
-            margin: 1rem auto;
-            max-width: 600px;
-            font-size: 1rem;
-            color: #555;
-        }
-        body.dark .description {
-            color: #ccc;
-        }
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            transition: background-color 0.3s;
-        }
-        body.dark form {
-            background-color: #1e1e1e;
-        }
-        label {
-            display: block;
-            margin: 1rem 0 0.5rem;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            color: #000;
-        }
-        body.dark input, body.dark select, body.dark textarea {
-            background-color: #2a2a2a;
-            color: #eee;
-            border-color: #555;
-        }
-        button {
-            margin-top: 1.5rem;
-            padding: 12px 25px;
-            background-color: #5c6bc0;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>تقديم مذيعين جدد</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      direction: rtl;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    h1 {
+      background-color: #ffa500;
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 50px;
+      width: fit-content;
+      margin: auto auto 30px;
+      font-size: 26px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .success {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .icon-buttons {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .icon-buttons button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+  </style>
 </head>
 <body>
-    <header>
-        <div class="lang-theme">
-            <span id="toggle-theme" title="الوضع الليلي">🌓</span>
-            <span id="toggle-lang" title="تغيير اللغة">🌐</span>
-        </div>
-        <h1 id="form-title">تقديم مذيعين جدد</h1>
-    </header>
-    <div class="description">نحن نبحث عن مذيعين موهوبين للانضمام إلى فريقنا. إذا كنت تمتلك الخبرة أو الطموح، املأ النموذج التالي وسنتواصل معك قريبًا.</div>
-    <form id="surveyForm">
-        <label for="name">الاسم الكامل:</label>
-        <input type="text" id="name" name="name" required>
 
-        <label for="country">الدولة:</label>
-        <input type="text" id="country" name="country" required>
+<div class="icon-buttons">
+  <button onclick="toggleDarkMode()">🌙</button>
+  <button onclick="toggleLanguage()">🌐</button>
+</div>
 
-        <label for="gender">الجنس:</label>
-        <select id="gender" name="gender">
-            <option value="">-- اختر --</option>
-            <option value="male">ذكر</option>
-            <option value="female">أنثى</option>
-        </select>
+<div class="container" id="form-container">
+  <h1 id="form-title">تقديم مذيعين جدد</h1>
 
-        <label for="email">البريد الإلكتروني:</label>
-        <input type="email" id="email" name="email" required>
+  <form id="presenterForm">
+    <label>الاسم الكامل:</label>
+    <input type="text" name="name" required>
 
-        <label>هل لديك خبرة سابقة في نفس المجال؟</label>
-        <select name="experience">
-            <option value="نعم">نعم</option>
-            <option value="لا">لا</option>
-        </select>
+    <label>الدولة:</label>
+    <input type="text" name="country" required>
 
-        <label for="places">إذا نعم، اذكر الأماكن التي عملت بها والتخصص:</label>
-        <textarea id="places" name="places"></textarea>
+    <label>الجنس:</label>
+    <select name="gender" required onchange="changeThemeByGender(this.value)">
+      <option value="">اختر</option>
+      <option value="ذكر">ذكر</option>
+      <option value="أنثى">أنثى</option>
+    </select>
 
-        <label>هل كنت تعمل على أي منصة بث مباشر؟</label>
-        <select name="platform">
-            <option value="نعم">نعم</option>
-            <option value="لا">لا</option>
-        </select>
+    <label>البريد الإلكتروني:</label>
+    <input type="email" name="email" required>
 
-        <label for="platformName">إذا نعم، اذكر اسم المنصة:</label>
-        <input type="text" id="platformName" name="platformName">
+    <label>هل لديك خبرة سابقة في نفس المجال؟</label>
+    <select name="experience" required>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-        <label>هل لديك موهبة؟</label>
-        <select name="talent">
-            <option value="نعم">نعم</option>
-            <option value="لا">لا</option>
-        </select>
+    <label>إذا كانت الإجابة نعم، اذكر الأماكن التي عملت بها:</label>
+    <textarea name="places"></textarea>
 
-        <label for="talentType">إذا نعم، اذكر نوع الموهبة:</label>
-        <input type="text" id="talentType" name="talentType">
+    <label>هل كنت تعمل على أي منصة بث مباشر؟</label>
+    <select name="platform">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-        <label>هل أنت صانع محتوى؟</label>
-        <select name="content_creator">
-            <option value="نعم">نعم</option>
-            <option value="لا">لا</option>
-        </select>
+    <label>إذا كانت الإجابة نعم، اذكر اسم المنصة:</label>
+    <input type="text" name="platformName">
 
-        <label>هل لديك صفحة على أي منصة؟</label>
-        <select name="platform_account">
-            <option value="تيك توك">تيك توك</option>
-            <option value="كواي">كواي</option>
-            <option value="بيجو لايف">بيجو لايف</option>
-            <option value="أخرى">أخرى</option>
-        </select>
+    <label>هل لديك موهبة؟</label>
+    <select name="talent">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-        <label>هل لديك عدد متابعين يتخطى 10000 متابع على أي منصة تواصل؟</label>
-        <select name="followers_10k">
-            <option value="نعم">نعم</option>
-            <option value="لا">لا</option>
-        </select>
+    <label>إذا نعم، اذكر نوع الموهبة:</label>
+    <input type="text" name="talentType">
 
-        <label>في المستقبل، هل تود أن تكون ضمن فريقنا كمسؤول فريق BD؟</label>
-        <select name="future_bd">
-            <option value="نعم">نعم</option>
-            <option value="لا">لا</option>
-        </select>
+    <label>هل أنت صانع محتوى؟</label>
+    <select name="content_creator">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-        <label for="whatsapp">ما هو رقم الواتس الخاص بك؟</label>
-        <input type="text" id="whatsapp" name="whatsapp" required>
+    <label>هل لديك صفحة على أي منصة (تيك توك، كواي، بيجو...):</label>
+    <input type="text" name="platform_account">
 
-        <button type="submit">إرسال</button>
-    </form>
+    <label>هل لديك أكثر من 10000 متابع؟</label>
+    <select name="followers_10k">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-    <script>
-        const translations = {
-            ar: {
-                title: "تقديم مذيعين جدد",
-                description: "نحن نبحث عن مذيعين موهوبين للانضمام إلى فريقنا. إذا كنت تمتلك الخبرة أو الطموح، املأ النموذج التالي وسنتواصل معك قريبًا.",
-                name: "الاسم الكامل:",
-                country: "الدولة:",
-                gender: "الجنس:",
-                male: "ذكر",
-                female: "أنثى",
-                email: "البريد الإلكتروني:",
-                experience: "هل لديك خبرة سابقة في نفس المجال؟",
-                places: "إذا نعم، اذكر الأماكن التي عملت بها والتخصص:",
-                platform: "هل كنت تعمل على أي منصة بث مباشر؟",
-                platformName: "إذا نعم، اذكر اسم المنصة:",
-                talent: "هل لديك موهبة؟",
-                talentType: "إذا نعم، اذكر نوع الموهبة:",
-                contentCreator: "هل أنت صانع محتوى؟",
-                platformAccount: "هل لديك صفحة على أي منصة؟",
-                followers10k: "هل لديك عدد متابعين يتخطى 10000 متابع على أي منصة تواصل؟",
-                futureBD: "في المستقبل، هل تود أن تكون ضمن فريقنا كمسؤول فريق BD؟",
-                whatsapp: "ما هو رقم الواتس الخاص بك؟",
-                submit: "إرسال"
-            },
-            en: {
-                title: "Apply as a New Presenter",
-                description: "We are looking for talented presenters to join our team. If you have experience or ambition, fill out the form below and we will contact you soon.",
-                name: "Full Name:",
-                country: "Country:",
-                gender: "Gender:",
-                male: "Male",
-                female: "Female",
-                email: "Email Address:",
-                experience: "Do you have prior experience in this field?",
-                places: "If yes, mention where you worked and your role:",
-                platform: "Have you worked on any live streaming platform?",
-                platformName: "If yes, mention the platform name:",
-                talent: "Do you have a talent?",
-                talentType: "If yes, mention the type of talent:",
-                contentCreator: "Are you a content creator?",
-                platformAccount: "Do you have a page on any platform?",
-                followers10k: "Do you have more than 10,000 followers on any social platform?",
-                futureBD: "In the future, would you like to join our team as a BD Manager?",
-                whatsapp: "What is your WhatsApp number?",
-                submit: "Submit"
-            }
-        };
+    <label>هل تود أن تكون ضمن فريقنا كمسؤول فريق BD؟</label>
+    <select name="future_bd">
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
+    </select>
 
-        let currentLang = 'ar';
+    <label>رقم الواتساب الخاص بك:</label>
+    <input type="text" name="whatsapp" required>
 
-        function switchLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            const t = translations[currentLang];
-            document.getElementById('form-title').textContent = t.title;
-            document.querySelector('.description').textContent = t.description;
-            document.querySelector('label[for="name"]').textContent = t.name;
-            document.querySelector('label[for="country"]').textContent = t.country;
-            document.querySelector('label[for="gender"]').textContent = t.gender;
+    <button type="submit">إرسال</button>
+    <div class="success" id="response"></div>
+  </form>
+</div>
 
-            const genderOptions = document.getElementById('gender').options;
-            genderOptions[1].text = t.male;
-            genderOptions[2].text = t.female;
+<script>
+  const form = document.getElementById("presenterForm");
+  const responseEl = document.getElementById("response");
 
-            document.querySelector('label[for="email"]').textContent = t.email;
-            document.querySelectorAll('label')[4].textContent = t.experience;
-            document.querySelector('label[for="places"]').textContent = t.places;
-            document.querySelectorAll('label')[6].textContent = t.platform;
-            document.querySelector('label[for="platformName"]').textContent = t.platformName;
-            document.querySelectorAll('label')[8].textContent = t.talent;
-            document.querySelector('label[for="talentType"]').textContent = t.talentType;
-            document.querySelector('label[for="contentCreator"]').textContent = t.contentCreator;
-            document.querySelector('label[for="platformAccount"]').textContent = t.platformAccount;
-            document.querySelector('label[for="followers10k"]').textContent = t.followers10k;
-            document.querySelector('label[for="futureBD"]').textContent = t.futureBD;
-            document.querySelector('label[for="whatsapp"]').textContent = t.whatsapp;
-            document.querySelector('button').textContent = t.submit;
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzUgZ2uRcnVv2nVyRDBqLQP_x5hjShJQ2OxQSH4PyUdllS1R7fyRihaIxDCX3WPMHDz/exec";
 
-            document.body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-        }
+  form.addEventListener("submit", e => {
+    e.preventDefault();
 
-        document.getElementById('toggle-lang').onclick = switchLanguage;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
-        document.getElementById('toggle-theme').onclick = () => {
-            document.body.classList.toggle('dark');
-        }
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .then(response => {
+      if (response.success) {
+        responseEl.textContent = "تم الإرسال بنجاح!";
+        form.reset();
+      } else {
+        responseEl.textContent = "حدث خطأ، حاول مرة أخرى.";
+      }
+    })
+    .catch(error => {
+      responseEl.textContent = "حدث خطأ، حاول مجددًا.";
+    });
+  });
 
-        document.getElementById("surveyForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            var formData = new FormData(this);
-            var data = {};
-            formData.forEach(function(value, key) {
-                data[key] = value;
-            });
-            
-            var url = "https://script.google.com/macros/s/AKfycbz9RNaG6yT1SjXE0q7f0escThtDuCsWHhB6V8kd1asw5hQM6E6ozIO6NHhB22acVvIx/exec";
-            
-            fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert("تم إرسال البيانات بنجاح!");
-                document.getElementById("surveyForm").reset();
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("حدث خطأ، حاول مجددًا.");
-            });
-        });
-    </script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+  }
+
+  function toggleLanguage() {
+    alert("تغيير اللغة قيد التطوير حالياً");
+  }
+
+  function changeThemeByGender(value) {
+    const container = document.getElementById("form-container");
+    if (value === "ذكر") {
+      container.style.backgroundColor = "#f3e5d1"; // بني فاتح
+    } else if (value === "أنثى") {
+      container.style.backgroundColor = "#ffe4ec"; // وردي فاتح
+    } else {
+      container.style.backgroundColor = "#ffffff"; // افتراضي
+    }
+  }
+</script>
 </body>
 </html>
