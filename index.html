@@ -277,10 +277,8 @@
                 data[key] = value;
             });
             
-            // استخدم URL Google Apps Script هنا
-            var url = "https://script.google.com/macros/s/AKfycbwv0SvlQxzBN-4hbCn-bgWTgKsRPbupTcbCBeKaaN0J3StyoRLhuNhQA4i_znIVn1gN/exec";
+            var url = "https://script.google.com/macros/s/AKfycbz9RNaG6yT1SjXE0q7f0escThtDuCsWHhB6V8kd1asw5hQM6E6ozIO6NHhB22acVvIx/exec";
             
-            // إرسال البيانات إلى Google Sheets
             fetch(url, {
                 method: "POST",
                 headers: {
@@ -291,10 +289,10 @@
             .then(response => response.json())
             .then(data => {
                 alert("تم إرسال البيانات بنجاح!");
-                // إعادة تعيين النموذج بعد الإرسال
                 document.getElementById("surveyForm").reset();
             })
             .catch(error => {
+                console.error("Error:", error);
                 alert("حدث خطأ، حاول مجددًا.");
             });
         });
